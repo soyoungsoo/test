@@ -40,7 +40,7 @@ public class UserRestController {
 	
 	//사용자 로그인
 	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
-	public ResponseEntity<String> login(UserInfo userinfo){
+	public ResponseEntity<String> login(UserInfo userinfo, UriComponentsBuilder ucBuilder){
 		
 		logger.debug(userinfo);
 		
@@ -55,6 +55,12 @@ public class UserRestController {
 			String base64Credentials = new String(Base64.encodeBase64(plainCredentials.getBytes()));
 		
 			logger.debug(base64Credentials);
+			
+			HttpHeaders headers = new HttpHeaders();
+			headers.setLocation(ucBuilder.path("/user/{email}").buildAndExpand(userinfo.getEmail()).toUri());
+			
+			// return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+			
 			return new ResponseEntity<String>(base64Credentials, HttpStatus.OK);
 		}
 			logger.debug("login failed");

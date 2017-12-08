@@ -28,12 +28,12 @@ public class CORSFilter implements Filter{
 			throws IOException, ServletException {
 		logger.debug("Filtering on");
 		HttpServletResponse res = (HttpServletResponse) response;
-		res.setHeader("Access-Control-Allow-Origin", "*");
-		res.setHeader("Access-Control-Allow-Credentials", "true");
-		res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-		res.setHeader("Access-Control-Max-Age",	"3600");
-		res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization, "
-					+ "Origin, Accept, Access-Control-Request-Method," + "Access-Control-Request-Headers");
+		res.setHeader("Access-Control-Allow-Origin", "*"); // 모든 웹페이지에서 사용 가능
+		res.setHeader("Access-Control-Allow-Credentials", "true"); // 접속할떄 뜨는 창
+		res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS"); // 사용가능 메서드 
+		res.setHeader("Access-Control-Max-Age",	"3600"); // 웹페이지 허용 시간
+		res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization, " 
+					+ "Origin, Accept, Access-Control-Request-Method," + "Access-Control-Request-Headers"); // 허용하는 헤더들
 		chain.doFilter(request, response);
 		
 	}

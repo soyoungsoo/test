@@ -32,8 +32,54 @@
 					contentType: false,
 					cache: false,
 					success: function(data, textStatus, xhr){
+						
+						if(typeof(Storage) !== 'undefined'){
+								alert('ok');
+							}
+						else{
+								alert('not support');
+						}
 						$('#btnLogin').prop('disable',false);
-							alert(data);		
+							
+							var nextUrl = xhr.getResponseHeader('Location');
+							
+							sessionStorage.setItem("base64Credentials", data);
+							alert(nextUrl + " / " + sessionStorage.getItem('base64Credentials'));
+							
+							
+						},
+						error: function(error) {
+							$('#btnLogin').prop('disable',false);
+							alert(error);
+						}
+					});					
+			});
+		$('#btnJoinSubmit').click(function(e){
+			// 기본 이벤트 동작하지 않도록 하기
+			e.preventDefault();
+
+			// form 가져오기
+			var form = $('#frmJoin')[0];
+
+			// FormData 객체 생성
+			var formData = new FormData(form);
+
+			// 두 번 실행 방지를 위해 버튼 비활성
+			$('#btnJoinSubmit').prop('disable',true);
+			
+				$.ajax({					
+					type: 'post',
+					url: REST_SERVICE_URI + '/user',
+					//enctype: 'multipart/form-data',					
+					data: formData,
+					enctype: 'multipart/form-data',
+					processData: false,
+					contentType: false,					
+					cache: false,
+					timeout: 60000,
+					success: function(data, textStatus, xhr){
+						$('#btnJoinSubmit').prop('disable',false);
+							$.mobile.changePage('index.html');
 						},
 						error: function(error) {
 							$('#btnLogin').prop('disable',false);
