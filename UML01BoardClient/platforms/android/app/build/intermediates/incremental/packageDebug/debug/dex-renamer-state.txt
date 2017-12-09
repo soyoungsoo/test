@@ -1,4 +1,4 @@
-#Sat Dec 09 10:32:51 KST 2017
-base.0=C\:\\git\\test\\UML01BoardClient\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+#Sat Dec 09 18:16:11 KST 2017
+base.0=C\:\\evening_spring_new\\UML01BoardClient\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 renamed.0=classes.dex
-file.0=C\:\\git\\test\\UML01BoardClient\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex
+file.0=C\:\\evening_spring_new\\UML01BoardClient\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex
